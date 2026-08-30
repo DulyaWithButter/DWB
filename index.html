@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dulya With Butter (DULYA) — оберег на TON</title>
+<meta name="description" content="DULYA — шуточный токен-оберег на блокчейне TON. От зависти, сглаза и надоедливых конкурентов.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0d;
+    --ink-2:#161418;
+    --paper:#fff4e3;
+    --orange:#ff5a1f;
+    --orange-deep:#c73e10;
+    --gold:#ffb703;
+    --gold-2:#ffd85e;
+    --line: rgba(255,255,255,0.14);
+    --line-dark: rgba(0,0,0,0.16);
+    --max: 880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    background:var(--ink);
+    color:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Unbounded',sans-serif;
+    margin:0;
+    line-height:1.05;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{ position:relative; overflow:hidden; }
+  .band-black{ background:var(--ink); color:var(--paper); }
+  .band-orange{ background:var(--orange); color:var(--ink); }
+
+  /* subtle texture */
+  .band-black::before, .band-orange::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity:0.045;
+    pointer-events:none;
+  }
+
+  /* ---------- HEADER ---------- */
+  .hero{
+    padding: 92px 0 76px;
+    text-align:center;
+  }
+  .stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Unbounded',sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-2);
+    border:1.5px solid var(--gold-2);
+    border-radius:999px;
+    padding:8px 16px;
+    transform:rotate(-3deg);
+    margin-bottom:34px;
+    animation:wobble 6s ease-in-out infinite;
+  }
+  @keyframes wobble{
+    0%,100%{ transform:rotate(-3deg); }
+    50%{ transform:rotate(2deg); }
+  }
+  .logo-shell{
+    position:relative;
+    width:172px; height:172px;
+    margin:0 auto 30px;
+  }
+  .logo-glow{
+    position:absolute; inset:-40px;
+    background: radial-gradient(circle, var(--gold) 0%, rgba(255,183,3,0) 68%);
+    opacity:.55;
+    filter: blur(6px);
+    animation: pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); opacity:.5; }
+    50%{ transform:scale(1.08); opacity:.75; }
+  }
+  .logo-shell img{
+    position:relative;
+    width:100%; height:100%;
+    object-fit:contain;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.55));
+    animation: punch 5s ease-in-out infinite;
+  }
+  @keyframes punch{
+    0%,90%,100%{ transform: rotate(0deg) scale(1); }
+    93%{ transform: rotate(-9deg) scale(1.05); }
+    96%{ transform: rotate(4deg) scale(1.02); }
+  }
+  .title{
+    font-size: clamp(40px, 8vw, 74px);
+    font-weight:900;
+    color:var(--paper);
+    text-transform:uppercase;
+    letter-spacing:.01em;
+  }
+  .title em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .ticker{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:15px;
+    letter-spacing:.28em;
+    color:var(--orange);
+    margin-top:14px;
+  }
+  .tagline{
+    max-width:520px;
+    margin:26px auto 0;
+    font-size:19px;
+    line-height:1.55;
+    color:rgba(255,244,227,.85);
+  }
+  .cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+    margin-top:40px;
+  }
+  .btn{
+    font-family:'Unbounded',sans-serif;
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+    padding:17px 30px;
+    border-radius:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition: transform .15s ease, box-shadow .15s ease;
+    border:2px solid transparent;
+    cursor:pointer;
+  }
+  .btn:hover{ transform: translateY(-3px); }
+  .btn-primary{
+    background: linear-gradient(180deg, var(--gold-2), var(--gold));
+    color: var(--ink);
+    box-shadow: 0 10px 0 var(--orange-deep), 0 16px 30px rgba(0,0,0,.4);
+  }
+  .btn-primary:hover{ box-shadow: 0 6px 0 var(--orange-deep), 0 10px 20px rgba(0,0,0,.4); }
+  .btn-ghost{
+    background:transparent;
+    border-color: rgba(255,244,227,.5);
+    color: var(--paper);
+  }
+  .btn-ghost:hover{ border-color: var(--paper); background: rgba(255,244,227,.08); }
+  .btn-dark{
+    background:var(--ink);
+    color:var(--paper);
+    box-shadow: 0 10px 0 var(--ink-2), 0 16px 30px rgba(0,0,0,.25);
+  }
+  .btn-dark:hover{ box-shadow: 0 6px 0 var(--ink-2), 0 10px 20px rgba(0,0,0,.25); }
+  .btn svg{ width:18px; height:18px; flex:none; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ padding:88px 0; }
+  .eyebrow{
+    font-family:'Unbounded',sans-serif;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink);
+    opacity:.6;
+    margin-bottom:14px;
+  }
+  .about h2{
+    font-size:clamp(30px,4.4vw,44px);
+    max-width:600px;
+    margin-bottom:26px;
+  }
+  .about p{
+    font-size:18px;
+    line-height:1.7;
+    max-width:640px;
+    font-weight:500;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:52px;
+    align-items:start;
+  }
+  .fact-card{
+    background: rgba(11,11,13,.08);
+    border:1.5px solid rgba(11,11,13,.18);
+    border-radius:18px;
+    padding:22px 22px;
+    margin-top:16px;
+  }
+  .fact-card + .fact-card{ margin-top:14px; }
+  .fact-card .k{
+    font-family:'Unbounded',sans-serif;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .fact-card .v{ font-size:15px; line-height:1.5; opacity:.85; }
+  .disclaimer{
+    margin-top:30px;
+    font-size:14px;
+    font-weight:700;
+    padding:16px 18px;
+    border-radius:12px;
+    background: var(--ink);
+    color: var(--gold-2);
+    display:inline-block;
+  }
+
+  /* ---------- TOKENOMICS ---------- */
+  .tokenomics{ padding:96px 0; }
+  .tokenomics .eyebrow{ color: var(--gold-2); opacity:1; }
+  .tokenomics h2{ color:var(--paper); max-width:560px; margin-bottom:44px; }
+  .tok-grid{
+    display:grid;
+    grid-template-columns: .82fr 1.18fr;
+    gap:56px;
+    align-items:center;
+  }
+  .donut-wrap{ position:relative; width:100%; max-width:280px; margin:0 auto; }
+  .donut-wrap svg{ width:100%; height:auto; transform:rotate(-90deg); }
+  .donut-center{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+  }
+  .donut-center .n{ font-family:'Unbounded',sans-serif; font-size:30px; font-weight:900; }
+  .donut-center .s{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.6; margin-top:4px; }
+  .legend{ display:flex; flex-direction:column; gap:14px; margin-top:26px; }
+  .legend-item{ display:flex; align-items:center; gap:12px; font-size:14px; }
+  .dot{ width:12px; height:12px; border-radius:4px; flex:none; }
+  .legend-item .pct{ margin-left:auto; font-family:'JetBrains Mono',monospace; opacity:.7; }
+
+  .contract-box{
+    background: var(--ink-2);
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    padding:26px 26px 22px;
+  }
+  .contract-box .label{
+    font-family:'Unbounded',sans-serif;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--orange);
+    margin-bottom:12px;
+  }
+  .addr-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .addr{
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(13px,2.4vw,17px);
+    font-weight:700;
+    word-break:break-all;
+    color:var(--paper);
+  }
+  .copy-btn{
+    flex:none;
+    background: var(--gold);
+    color: var(--ink);
+    border:none;
+    border-radius:10px;
+    padding:10px 16px;
+    font-family:'Unbounded',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .copy-btn:hover{ background:var(--gold-2); transform: translateY(-2px); }
+  .copy-btn svg{ width:14px; height:14px; }
+  .dyor-row{ margin-top:20px; }
+
+  /* ---------- SECURITY ---------- */
+  .security{
+    padding:100px 0;
+    text-align:center;
+  }
+  .security .eyebrow{ justify-content:center; display:flex; }
+  .seal{
+    width:96px; height:96px;
+    margin:0 auto 30px;
+    border-radius:50%;
+    border:3px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .seal svg{ width:44px; height:44px; }
+  .security h2{
+    font-size:clamp(26px,5vw,46px);
+    max-width:720px;
+    margin:0 auto;
+    line-height:1.25;
+    color:var(--ink);
+  }
+  .security h2 .safe{ color: var(--paper); background:var(--ink); padding:2px 12px; border-radius:8px; display:inline-block; }
+  .security .sub{
+    max-width:520px;
+    margin:24px auto 0;
+    font-size:16px;
+    font-weight:600;
+    opacity:.75;
+  }
+
+  footer{
+    background:var(--ink);
+    padding:34px 0 40px;
+    text-align:center;
+    font-size:13px;
+    color: rgba(255,244,227,.45);
+  }
+  footer a{ color:var(--gold-2); text-decoration:none; }
+
+  @media (max-width: 760px){
+    .about-grid, .tok-grid{ grid-template-columns:1fr; }
+    .about, .tokenomics{ padding:64px 0; }
+    .hero{ padding:64px 0 56px; }
+    .addr-row{ flex-direction:column; align-items:flex-start; }
+    .copy-btn{ width:100%; justify-content:center; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER (BLACK) ============ -->
+<section class="band-black">
+  <div class="wrap hero">
+    <span class="stamp">✦ Оберег комьюнити TON ✦</span>
+    <div class="logo-shell">
+      <div class="logo-glow"></div>
+      <img src="assets/logo.png" alt="Логотип DULYA — сжатый кулак">
+    </div>
+    <h1 class="title">DULYA <em>WITH</em><br>BUTTER</h1>
+    <span class="ticker">$DULYA · TON BLOCKCHAIN</span>
+    <p class="tagline">Дуля — оберег от завистников и надоедливых конкурентов. Показал, отвёл беду, пошёл дальше.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://app.ston.fi/swap?chartVisible=true&amp;ft=GRAM&amp;tt=EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg&amp;chartInterval=1w" target="_blank" rel="noopener">
+        Купить на STON.fi
+      </a>
+      <a class="btn btn-ghost" href="https://t.me/DulyaWB" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.2c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L22 5.3c.3-1.2-.4-1.7-1-1.3z" fill="currentColor"/></svg>
+        Присоединиться к Telegram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT (ORANGE) ============ -->
+<section class="band-orange">
+  <div class="wrap about">
+    <div class="eyebrow">01 · О проекте</div>
+    <div class="about-grid">
+      <div>
+        <h2>Токен-шутка с серьёзным чувством юмора</h2>
+        <p>DULYA — это мемный токен на блокчейне TON, придуманный ради развлечения комьюнити, а не как финансовый инструмент. Мы не обещаем доходность и не считаем дулю оскорблением — это добрый жест-оберег, который держат с улыбкой. Часть эмиссии зарезервирована для активных участников будущего комьюнити, а в планах — Telegram-приложение с наградами и постоянная поддержка ликвидности токена.</p>
+        <div class="disclaimer">⚠ Только для развлечения. Не финансовый совет и не оскорбление.</div>
+      </div>
+      <div>
+        <div class="fact-card">
+          <span class="k">Что уже есть</span>
+          <span class="v">Токен выпущен в сети TON, торгуется на STON.fi, есть Telegram-канал комьюнити.</span>
+        </div>
+        <div class="fact-card">
+          <span class="k">Что в планах</span>
+          <span class="v">Распределение токенов активным участникам, Telegram Mini App с наградами, поддержка и расширение ликвидности.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOKENOMICS (BLACK) ============ -->
+<section class="band-black">
+  <div class="wrap tokenomics">
+    <div class="eyebrow">02 · Токеномика</div>
+    <h2>Куда распределяется эмиссия</h2>
+
+    <div class="tok-grid">
+      <div>
+        <div class="donut-wrap">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#26221f" stroke-width="26"/>
+            <!-- Ликвидность 65% -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#ffb703" stroke-width="26"
+              stroke-dasharray="326.7 502.7" stroke-dashoffset="0" stroke-linecap="butt"/>
+            <!-- Маркетинг 25% -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#ff5a1f" stroke-width="26"
+              stroke-dasharray="125.7 502.7" stroke-dashoffset="-326.7" stroke-linecap="butt"/>
+            <!-- Команда 10% -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#fff4e3" stroke-width="26"
+              stroke-dasharray="50.3 502.7" stroke-dashoffset="-452.4" stroke-linecap="butt"/>
+          </svg>
+          <div class="donut-center">
+            <span class="n">100%</span>
+            <span class="s">эмиссии</span>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><span class="dot" style="background:#ffb703"></span> Ликвидность <span class="pct">65%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#ff5a1f"></span> Маркетинг <span class="pct">25%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#fff4e3"></span> Команда <span class="pct">10%</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="contract-box">
+          <div class="label">Адрес смарт-контракта</div>
+          <div class="addr-row">
+            <span class="addr" id="contract-addr">EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg</span>
+            <button class="copy-btn" id="copy-btn" onclick="copyAddress()">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2"/></svg>
+              <span id="copy-label">Скопировать</span>
+            </button>
+          </div>
+          <div class="dyor-row">
+            <a class="btn btn-dark" href="https://dyor.io/ru/token/EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg" target="_blank" rel="noopener">
+              Смотреть на DYOR.io ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECURITY (ORANGE) ============ -->
+<section class="band-orange">
+  <div class="wrap security">
+    <div class="eyebrow">03 · Безопасность</div>
+    <div class="seal">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 8.4-7 11-3.6-2.6-7-6-7-11V5l7-3z" fill="var(--ink)"/><path d="M9 12l2 2 4-4" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2>Минтинг отключён, права владения сожжены <span class="safe">Ownership&nbsp;Revoked</span>. Токен на 100% безопасен.</h2>
+    <p class="sub">Никто, включая создателей, не может допечатать новые DULYA или изменить контракт. Это можно проверить напрямую в блокчейне TON.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    $DULYA · Дуля с маслом · только ради смеха ✊ · <a href="https://t.me/DulyaWB" target="_blank" rel="noopener">Telegram</a>
+  </div>
+</footer>
+
+<script>
+function copyAddress(){
+  const addr = document.getElementById('contract-addr').textContent.trim();
+  const label = document.getElementById('copy-label');
+  navigator.clipboard.writeText(addr).then(function(){
+    label.textContent = 'Скопировано!';
+    setTimeout(function(){ label.textContent = 'Скопировать'; }, 1800);
+  }).catch(function(){
+    label.textContent = 'Не удалось';
+    setTimeout(function(){ label.textContent = 'Скопировать'; }, 1800);
+  });
+}
+</script>
+
+</body>
+</html>
