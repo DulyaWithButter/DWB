@@ -306,17 +306,60 @@
   .copy-btn svg{ width:14px; height:14px; }
   .dyor-row{ margin-top:20px; }
 
+  /* ---------- TEAM ---------- */
+  .team{ padding:96px 0; }
+  .team h2{ font-size:clamp(30px,4.4vw,44px); color:var(--ink); max-width:600px; margin-bottom:44px; }
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .member{
+    background: rgba(11,11,13,.08);
+    border:1.5px solid rgba(11,11,13,.18);
+    border-radius:22px;
+    padding:14px 14px 22px;
+    transition: transform .2s ease;
+  }
+  .member:hover{ transform: translateY(-4px) rotate(-.6deg); }
+  .member img{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:14px;
+    border:3px solid var(--ink);
+    box-shadow: 0 8px 0 var(--ink);
+    margin-bottom:22px;
+    background:var(--ink);
+  }
+  .member .role{
+    font-family:'Unbounded',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    color:var(--ink);
+    margin:0 4px 8px;
+  }
+  .member .desc{
+    font-size:15px;
+    line-height:1.5;
+    font-weight:600;
+    color:var(--ink);
+    opacity:.8;
+    margin:0 4px;
+  }
+
   /* ---------- SECURITY ---------- */
   .security{
     padding:100px 0;
     text-align:center;
   }
-  .security .eyebrow{ justify-content:center; display:flex; }
+  .security .eyebrow{ justify-content:center; display:flex; color:var(--gold-2); opacity:1; }
   .seal{
     width:96px; height:96px;
     margin:0 auto 30px;
     border-radius:50%;
-    border:3px solid var(--ink);
+    border:3px solid var(--gold);
     display:flex; align-items:center; justify-content:center;
   }
   .seal svg{ width:44px; height:44px; }
@@ -325,9 +368,9 @@
     max-width:720px;
     margin:0 auto;
     line-height:1.25;
-    color:var(--ink);
+    color:var(--paper);
   }
-  .security h2 .safe{ color: var(--paper); background:var(--ink); padding:2px 12px; border-radius:8px; display:inline-block; }
+  .security h2 .safe{ color: var(--ink); background:var(--gold); padding:2px 12px; border-radius:8px; display:inline-block; }
   .security .sub{
     max-width:520px;
     margin:24px auto 0;
@@ -347,7 +390,8 @@
 
   @media (max-width: 760px){
     .about-grid, .tok-grid{ grid-template-columns:1fr; }
-    .about, .tokenomics{ padding:64px 0; }
+    .about, .tokenomics, .team{ padding:64px 0; }
+    .team-grid{ grid-template-columns:1fr; max-width:360px; margin:0 auto; }
     .hero{ padding:64px 0 56px; }
     .addr-row{ flex-direction:column; align-items:flex-start; }
     .copy-btn{ width:100%; justify-content:center; }
@@ -378,6 +422,9 @@
       <a class="btn btn-ghost" href="https://t.me/DulyaWB" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.2c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L22 5.3c.3-1.2-.4-1.7-1-1.3z" fill="currentColor"/></svg>
         Присоединиться к Telegram
+      </a>
+      <a class="btn btn-primary" href="https://t.me/DulyaWithButterBot" target="_blank" rel="noopener">
+        Играть в Mini App
       </a>
     </div>
   </div>
@@ -418,15 +465,15 @@
         <div class="donut-wrap">
           <svg viewBox="0 0 200 200">
             <circle cx="100" cy="100" r="80" fill="none" stroke="#26221f" stroke-width="26"/>
-            <!-- Ликвидность 65% -->
+            <!-- Ликвидность 55% -->
             <circle cx="100" cy="100" r="80" fill="none" stroke="#ffb703" stroke-width="26"
-              stroke-dasharray="326.7 502.7" stroke-dashoffset="0" stroke-linecap="butt"/>
+              stroke-dasharray="276.5 502.7" stroke-dashoffset="0" stroke-linecap="butt"/>
             <!-- Маркетинг 25% -->
             <circle cx="100" cy="100" r="80" fill="none" stroke="#ff5a1f" stroke-width="26"
-              stroke-dasharray="125.7 502.7" stroke-dashoffset="-326.7" stroke-linecap="butt"/>
-            <!-- Команда 10% -->
+              stroke-dasharray="125.7 502.7" stroke-dashoffset="-276.5" stroke-linecap="butt"/>
+            <!-- Команда 20% -->
             <circle cx="100" cy="100" r="80" fill="none" stroke="#fff4e3" stroke-width="26"
-              stroke-dasharray="50.3 502.7" stroke-dashoffset="-452.4" stroke-linecap="butt"/>
+              stroke-dasharray="100.5 502.7" stroke-dashoffset="-402.2" stroke-linecap="butt"/>
           </svg>
           <div class="donut-center">
             <span class="n">100%</span>
@@ -434,9 +481,9 @@
           </div>
         </div>
         <div class="legend">
-          <div class="legend-item"><span class="dot" style="background:#ffb703"></span> Ликвидность <span class="pct">65%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#ffb703"></span> Ликвидность <span class="pct">55%</span></div>
           <div class="legend-item"><span class="dot" style="background:#ff5a1f"></span> Маркетинг <span class="pct">25%</span></div>
-          <div class="legend-item"><span class="dot" style="background:#fff4e3"></span> Команда <span class="pct">10%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#fff4e3"></span> Команда <span class="pct">20%</span></div>
         </div>
       </div>
 
@@ -461,12 +508,37 @@
   </div>
 </section>
 
-<!-- ============ SECURITY (ORANGE) ============ -->
+<!-- ============ TEAM (ORANGE) ============ -->
 <section class="band-orange">
+  <div class="wrap team">
+    <div class="eyebrow">03 · Наша команда</div>
+    <h2>Кто крутит дули</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/team/freddy.jpg" alt="Фреди" loading="lazy">
+        <div class="role">Фреди</div>
+        <p class="desc">Идейный вдохновитель</p>
+      </div>
+      <div class="member">
+        <img src="assets/team/accountant.jpg" alt="Бухгалтер" loading="lazy">
+        <div class="role">Бухгалтер</div>
+        <p class="desc">Отниматель, умножитель и главный скручиватель дулей</p>
+      </div>
+      <div class="member">
+        <img src="assets/team/programmer.jpg" alt="Программист" loading="lazy">
+        <div class="role">Программист</div>
+        <p class="desc">Слепил всё это на коленке</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECURITY (BLACK) ============ -->
+<section class="band-black">
   <div class="wrap security">
-    <div class="eyebrow">03 · Безопасность</div>
+    <div class="eyebrow">04 · Безопасность</div>
     <div class="seal">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 8.4-7 11-3.6-2.6-7-6-7-11V5l7-3z" fill="var(--ink)"/><path d="M9 12l2 2 4-4" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 8.4-7 11-3.6-2.6-7-6-7-11V5l7-3z" fill="var(--gold)"/><path d="M9 12l2 2 4-4" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h2>Минтинг отключён, права владения сожжены <span class="safe">Ownership&nbsp;Revoked</span>. Токен на 100% безопасен.</h2>
     <p class="sub">Никто, включая создателей, не может допечатать новые DULYA или изменить контракт. Это можно проверить напрямую в блокчейне TON.</p>
