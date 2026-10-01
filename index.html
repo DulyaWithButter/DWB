@@ -178,6 +178,26 @@
   .btn-dark:hover{ box-shadow: 0 6px 0 var(--ink-2), 0 10px 20px rgba(0,0,0,.25); }
   .btn svg{ width:18px; height:18px; flex:none; }
 
+  /* ---------- LANG SWITCH ---------- */
+  .lang-switch{
+    position:absolute; top:20px; right:20px; z-index:5;
+    display:inline-flex;
+    border:1.5px solid rgba(255,244,227,.35);
+    border-radius:999px;
+    padding:3px;
+    background:rgba(11,11,13,.6);
+  }
+  .lang-switch button{
+    font-family:'Unbounded',sans-serif;
+    font-size:11px; font-weight:700; letter-spacing:.08em;
+    background:transparent; color:rgba(255,244,227,.6);
+    border:none; border-radius:999px;
+    padding:7px 12px; cursor:pointer;
+    transition: background .15s ease, color .15s ease;
+  }
+  .lang-switch button:hover{ color:var(--paper); }
+  .lang-switch button[aria-pressed="true"]{ background:var(--gold); color:var(--ink); }
+
   /* ---------- ABOUT ---------- */
   .about{ padding:88px 0; }
   .eyebrow{
@@ -397,6 +417,15 @@
     .copy-btn{ width:100%; justify-content:center; }
   }
 
+  /* keep side gutters: section paddings above would otherwise zero them */
+  .wrap.hero, .wrap.about, .wrap.tokenomics, .wrap.team, .wrap.security{
+    padding-left:24px; padding-right:24px;
+  }
+  @media (max-width: 760px){
+    .hero{ padding-top:76px; }
+    .lang-switch{ top:16px; right:16px; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; }
   }
@@ -406,25 +435,29 @@
 
 <!-- ============ HEADER (BLACK) ============ -->
 <section class="band-black">
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
   <div class="wrap hero">
-    <span class="stamp">✦ Оберег комьюнити TON ✦</span>
+    <span class="stamp" data-i18n="stamp">✦ Оберег комьюнити TON ✦</span>
     <div class="logo-shell">
       <div class="logo-glow"></div>
-      <img src="assets/logo.png" alt="Логотип DULYA — сжатый кулак">
+      <img src="assets/logo.png" alt="Логотип DULYA — сжатый кулак" data-i18n-alt="logoAlt">
     </div>
     <h1 class="title">DULYA <em>WITH</em><br>BUTTER</h1>
     <span class="ticker">$DULYA · TON BLOCKCHAIN</span>
-    <p class="tagline">Дуля — оберег от завистников и надоедливых конкурентов. Показал, отвёл беду, пошёл дальше.</p>
+    <p class="tagline" data-i18n="tagline">Дуля — оберег от завистников и надоедливых конкурентов. Показал, отвёл беду, пошёл дальше.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="https://app.ston.fi/swap?chartVisible=true&amp;ft=GRAM&amp;tt=EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg&amp;chartInterval=1w" target="_blank" rel="noopener">
-        Купить на STON.fi
+        <span data-i18n="buy">Купить на STON.fi</span>
       </a>
       <a class="btn btn-ghost" href="https://t.me/DulyaWB" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.2c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L22 5.3c.3-1.2-.4-1.7-1-1.3z" fill="currentColor"/></svg>
-        Присоединиться к Telegram
+        <span data-i18n="joinTg">Присоединиться к Telegram</span>
       </a>
       <a class="btn btn-primary" href="https://t.me/DulyaWithButterBot" target="_blank" rel="noopener">
-        Играть в Mini App
+        <span data-i18n="play">Играть в Mini App</span>
       </a>
     </div>
   </div>
@@ -433,21 +466,21 @@
 <!-- ============ ABOUT (ORANGE) ============ -->
 <section class="band-orange">
   <div class="wrap about">
-    <div class="eyebrow">01 · О проекте</div>
+    <div class="eyebrow" data-i18n="ebAbout">01 · О проекте</div>
     <div class="about-grid">
       <div>
-        <h2>Токен-шутка с серьёзным чувством юмора</h2>
-        <p>DULYA — это мемный токен на блокчейне TON, придуманный ради развлечения комьюнити, а не как финансовый инструмент. Мы не обещаем доходность и не считаем дулю оскорблением — это добрый жест-оберег, который держат с улыбкой. Часть эмиссии зарезервирована для активных участников будущего комьюнити, а в планах — Telegram-приложение с наградами и постоянная поддержка ликвидности токена.</p>
-        <div class="disclaimer">⚠ Только для развлечения. Не финансовый совет и не оскорбление.</div>
+        <h2 data-i18n="aboutH">Токен-шутка с серьёзным чувством юмора</h2>
+        <p data-i18n="aboutP">DULYA — это мемный токен на блокчейне TON, придуманный ради развлечения комьюнити, а не как финансовый инструмент. Мы не обещаем доходность и не считаем дулю оскорблением — это добрый жест-оберег, который держат с улыбкой. Часть эмиссии зарезервирована для активных участников будущего комьюнити, а в планах — Telegram-приложение с наградами и постоянная поддержка ликвидности токена.</p>
+        <div class="disclaimer" data-i18n="disclaimer">⚠ Только для развлечения. Не финансовый совет и не оскорбление.</div>
       </div>
       <div>
         <div class="fact-card">
-          <span class="k">Что уже есть</span>
-          <span class="v">Токен выпущен в сети TON, торгуется на STON.fi, есть Telegram-канал комьюнити.</span>
+          <span class="k" data-i18n="nowK">Что уже есть</span>
+          <span class="v" data-i18n="nowV">Токен выпущен в сети TON, торгуется на STON.fi, есть Telegram-канал комьюнити.</span>
         </div>
         <div class="fact-card">
-          <span class="k">Что в планах</span>
-          <span class="v">Распределение токенов активным участникам, Telegram Mini App с наградами, поддержка и расширение ликвидности.</span>
+          <span class="k" data-i18n="planK">Что в планах</span>
+          <span class="v" data-i18n="planV">Распределение токенов активным участникам, Telegram Mini App с наградами, поддержка и расширение ликвидности.</span>
         </div>
       </div>
     </div>
@@ -457,8 +490,8 @@
 <!-- ============ TOKENOMICS (BLACK) ============ -->
 <section class="band-black">
   <div class="wrap tokenomics">
-    <div class="eyebrow">02 · Токеномика</div>
-    <h2>Куда распределяется эмиссия</h2>
+    <div class="eyebrow" data-i18n="ebTok">02 · Токеномика</div>
+    <h2 data-i18n="tokH">Куда распределяется эмиссия</h2>
 
     <div class="tok-grid">
       <div>
@@ -477,29 +510,29 @@
           </svg>
           <div class="donut-center">
             <span class="n">100%</span>
-            <span class="s">эмиссии</span>
+            <span class="s" data-i18n="supply">эмиссии</span>
           </div>
         </div>
         <div class="legend">
-          <div class="legend-item"><span class="dot" style="background:#ffb703"></span> Ликвидность <span class="pct">55%</span></div>
-          <div class="legend-item"><span class="dot" style="background:#ff5a1f"></span> Маркетинг <span class="pct">25%</span></div>
-          <div class="legend-item"><span class="dot" style="background:#fff4e3"></span> Команда <span class="pct">20%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#ffb703"></span> <span data-i18n="liq">Ликвидность</span> <span class="pct">55%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#ff5a1f"></span> <span data-i18n="mkt">Маркетинг</span> <span class="pct">25%</span></div>
+          <div class="legend-item"><span class="dot" style="background:#fff4e3"></span> <span data-i18n="teamL">Команда</span> <span class="pct">20%</span></div>
         </div>
       </div>
 
       <div>
         <div class="contract-box">
-          <div class="label">Адрес смарт-контракта</div>
+          <div class="label" data-i18n="addrL">Адрес смарт-контракта</div>
           <div class="addr-row">
             <span class="addr" id="contract-addr">EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg</span>
             <button class="copy-btn" id="copy-btn" onclick="copyAddress()">
               <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="2"/></svg>
-              <span id="copy-label">Скопировать</span>
+              <span id="copy-label" data-i18n="copy">Скопировать</span>
             </button>
           </div>
           <div class="dyor-row">
-            <a class="btn btn-dark" href="https://dyor.io/ru/token/EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg" target="_blank" rel="noopener">
-              Смотреть на DYOR.io ↗
+            <a class="btn btn-dark" id="dyor-link" href="https://dyor.io/ru/token/EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg" target="_blank" rel="noopener">
+              <span data-i18n="dyor">Смотреть на DYOR.io ↗</span>
             </a>
           </div>
         </div>
@@ -511,23 +544,23 @@
 <!-- ============ TEAM (ORANGE) ============ -->
 <section class="band-orange">
   <div class="wrap team">
-    <div class="eyebrow">03 · Наша команда</div>
-    <h2>Кто крутит дули</h2>
+    <div class="eyebrow" data-i18n="ebTeam">03 · Наша команда</div>
+    <h2 data-i18n="teamH">Кто крутит дули</h2>
     <div class="team-grid">
       <div class="member">
-        <img src="assets/team/freddy.jpg" alt="Фреди" loading="lazy">
-        <div class="role">Фреди</div>
-        <p class="desc">Идейный вдохновитель</p>
+        <img src="assets/team/freddy.jpg" alt="Фреди" data-i18n-alt="m1" loading="lazy">
+        <div class="role" data-i18n="m1">Фреди</div>
+        <p class="desc" data-i18n="m1d">Идейный вдохновитель</p>
       </div>
       <div class="member">
-        <img src="assets/team/accountant.jpg" alt="Бухгалтер" loading="lazy">
-        <div class="role">Бухгалтер</div>
-        <p class="desc">Отниматель, умножитель и главный скручиватель дулей</p>
+        <img src="assets/team/accountant.jpg" alt="Бухгалтер" data-i18n-alt="m2" loading="lazy">
+        <div class="role" data-i18n="m2">Бухгалтер</div>
+        <p class="desc" data-i18n="m2d">Отниматель, умножитель и главный скручиватель дулей</p>
       </div>
       <div class="member">
-        <img src="assets/team/programmer.jpg" alt="Программист" loading="lazy">
-        <div class="role">Программист</div>
-        <p class="desc">Слепил всё это на коленке</p>
+        <img src="assets/team/programmer.jpg" alt="Программист" data-i18n-alt="m3" loading="lazy">
+        <div class="role" data-i18n="m3">Программист</div>
+        <p class="desc" data-i18n="m3d">Слепил всё это на коленке</p>
       </div>
     </div>
   </div>
@@ -536,31 +569,110 @@
 <!-- ============ SECURITY (BLACK) ============ -->
 <section class="band-black">
   <div class="wrap security">
-    <div class="eyebrow">04 · Безопасность</div>
+    <div class="eyebrow" data-i18n="ebSec">04 · Безопасность</div>
     <div class="seal">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 8.4-7 11-3.6-2.6-7-6-7-11V5l7-3z" fill="var(--gold)"/><path d="M9 12l2 2 4-4" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <h2>Минтинг отключён, права владения сожжены <span class="safe">Ownership&nbsp;Revoked</span>. Токен на 100% безопасен.</h2>
-    <p class="sub">Никто, включая создателей, не может допечатать новые DULYA или изменить контракт. Это можно проверить напрямую в блокчейне TON.</p>
+    <h2 data-i18n="secH">Минтинг отключён, права владения сожжены <span class="safe">Ownership&nbsp;Revoked</span>. Токен на 100% безопасен.</h2>
+    <p class="sub" data-i18n="secP">Никто, включая создателей, не может допечатать новые DULYA или изменить контракт. Это можно проверить напрямую в блокчейне TON.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    $DULYA · Дуля с маслом · только ради смеха ✊ · <a href="https://t.me/DulyaWB" target="_blank" rel="noopener">Telegram</a>
+    $DULYA · <span data-i18n="foot">Дуля с маслом · только ради смеха</span> ✊ · <a href="https://t.me/DulyaWB" target="_blank" rel="noopener">Telegram</a>
   </div>
 </footer>
 
 <script>
+var I18N = {
+  ru: {
+    _title: 'Dulya With Butter (DULYA) — оберег на TON',
+    _desc: 'DULYA — шуточный токен-оберег на блокчейне TON. От зависти, сглаза и надоедливых конкурентов.',
+    copied: 'Скопировано!', copyFail: 'Не удалось',
+    dyorHref: 'https://dyor.io/ru/token/EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg'
+  },
+  en: {
+    _title: 'Dulya With Butter (DULYA) — a good-luck charm on TON',
+    _desc: 'DULYA is a joke charm token on the TON blockchain. Wards off envy, the evil eye and annoying competitors.',
+    copied: 'Copied!', copyFail: 'Failed',
+    dyorHref: 'https://dyor.io/token/EQDh6mkvSktcEnzPwG9rprBkYCzdbqlNQG0BvSGJ1SjN6Hmg',
+    stamp: '✦ TON community charm ✦',
+    logoAlt: 'DULYA logo — a fig-sign fist',
+    tagline: 'The dulya (a thumb poked between two fingers) is an old Slavic charm against haters and pesky competitors. Flash it, ward off trouble, move on.',
+    buy: 'Buy on STON.fi',
+    joinTg: 'Join Telegram',
+    play: 'Play the Mini App',
+    ebAbout: '01 · About',
+    aboutH: 'A joke token with a serious sense of humor',
+    aboutP: 'DULYA is a meme token on the TON blockchain, made for community fun — not as a financial instrument. We promise no returns, and we don’t mean the dulya as an insult: it’s a friendly protective gesture, always shown with a grin. Part of the supply is reserved for active community members, and the roadmap includes a Telegram app with rewards and ongoing liquidity support.',
+    disclaimer: '⚠ For fun only. Not financial advice, and no offense meant.',
+    nowK: 'Already live',
+    nowV: 'Token launched on TON, trading on STON.fi, community Telegram channel up and running.',
+    planK: 'Coming next',
+    planV: 'Token drops for active members, a Telegram Mini App with rewards, deeper and wider liquidity.',
+    ebTok: '02 · Tokenomics',
+    tokH: 'Where the supply goes',
+    supply: 'of supply',
+    liq: 'Liquidity', mkt: 'Marketing', teamL: 'Team',
+    addrL: 'Smart contract address',
+    copy: 'Copy',
+    dyor: 'View on DYOR.io ↗',
+    ebTeam: '03 · Our team',
+    teamH: 'Who twists the dulyas',
+    m1: 'Freddy', m1d: 'Mastermind and chief inspiration',
+    m2: 'The Accountant', m2d: 'Subtracts, multiplies, and is head twister of dulyas',
+    m3: 'The Developer', m3d: 'Hacked all of this together on his knee',
+    ebSec: '04 · Security',
+    secH: 'Minting disabled, ownership burned — <span class="safe">Ownership&nbsp;Revoked</span>. The contract is locked for good.',
+    secP: 'No one, creators included, can mint new DULYA or change the contract. You can verify it yourself on the TON blockchain.',
+    foot: 'Dulya with butter · just for laughs'
+  }
+};
+// capture Russian originals from the markup
+document.querySelectorAll('[data-i18n]').forEach(function(el){ I18N.ru[el.dataset.i18n] = el.innerHTML; });
+document.querySelectorAll('[data-i18n-alt]').forEach(function(el){ I18N.ru['alt:'+el.dataset.i18nAlt] = el.alt; });
+
+var currentLang = 'ru';
+function setLang(lang){
+  var d = I18N[lang] || I18N.ru;
+  currentLang = I18N[lang] ? lang : 'ru';
+  document.documentElement.lang = currentLang;
+  document.title = d._title;
+  var meta = document.querySelector('meta[name="description"]'); if (meta) meta.content = d._desc;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var v = d[el.dataset.i18n]; if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+    var v = currentLang === 'ru' ? I18N.ru['alt:'+el.dataset.i18nAlt] : d[el.dataset.i18nAlt === 'logoAlt' ? 'logoAlt' : el.dataset.i18nAlt];
+    if (v != null) el.alt = v.replace(/<[^>]*>/g,'');
+  });
+  document.getElementById('dyor-link').href = d.dyorHref;
+  document.querySelectorAll('.lang-switch button').forEach(function(b){
+    b.setAttribute('aria-pressed', b.dataset.lang === currentLang ? 'true' : 'false');
+  });
+  try { localStorage.setItem('dulya-lang', currentLang); } catch(e){}
+}
+document.querySelectorAll('.lang-switch button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+});
+(function(){
+  var q = new URLSearchParams(location.search).get('lang');
+  var saved = null; try { saved = localStorage.getItem('dulya-lang'); } catch(e){}
+  var nav = (navigator.language || 'ru').toLowerCase();
+  var auto = /^(ru|uk|be|kk)/.test(nav) ? 'ru' : 'en';
+  setLang(q || saved || auto);
+})();
+
 function copyAddress(){
   const addr = document.getElementById('contract-addr').textContent.trim();
   const label = document.getElementById('copy-label');
+  const d = I18N[currentLang];
+  const reset = function(){ label.innerHTML = d.copy; };
   navigator.clipboard.writeText(addr).then(function(){
-    label.textContent = 'Скопировано!';
-    setTimeout(function(){ label.textContent = 'Скопировать'; }, 1800);
+    label.textContent = d.copied; setTimeout(reset, 1800);
   }).catch(function(){
-    label.textContent = 'Не удалось';
-    setTimeout(function(){ label.textContent = 'Скопировать'; }, 1800);
+    label.textContent = d.copyFail; setTimeout(reset, 1800);
   });
 }
 </script>
